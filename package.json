@@ -1,0 +1,53 @@
+{
+  "name": "pi-home-gpio",
+  "version": "0.0.1",
+  "description": "GPIO interface for https://github.com/raspberry-pi-home/pi-home-raspberry",
+  "author": {
+    "name": "Gustavo Ingrassia",
+    "email": "gustavo.ingrassia@gmail.com"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/raspberry-pi-home/pi-home-gpio",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/raspberry-pi-home/pi-home-gpio.git"
+  },
+  "main": "lib/pi-home-gpio.min.js",
+  "engines": {
+    "node": ">=6"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.2.2",
+    "babel-jest": "^22.4.3",
+    "babel-loader": "^7.1.4",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-dynamic-import-node": "^1.2.0",
+    "babel-plugin-dynamic-import-webpack": "^1.0.2",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-stage-3": "^6.24.1",
+    "eslint": "^4.19.1",
+    "eslint-config-eventbrite": "^4.1.0",
+    "eslint-loader": "^2.0.0",
+    "eslint-plugin-babel": "^5.0.0",
+    "eslint-plugin-import": "^2.10.0",
+    "jest": "^22.4.3",
+    "jest-junit": "^3.6.0",
+    "release-it": "^7.3.0",
+    "webpack": "^4.4.1",
+    "webpack-cli": "^2.0.13",
+    "yargs": "^11.0.0"
+  },
+  "scripts": {
+    "eslint": "eslint src/ test/",
+    "build": "webpack --env development && webpack --env production",
+    "dev": "webpack --progress --colors --watch --env development",
+    "test": "jest --config=jest.config.json",
+    "test:watch": "DEBUG=true yarn test --watch",
+    "release": "release-it",
+    "release:minor": "release-it minor",
+    "release:major": "release-it major"
+  }
+}
