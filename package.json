@@ -40,6 +40,10 @@
     "webpack-cli": "^2.0.13",
     "yargs": "^11.0.0"
   },
+  "dependencies": {
+    "rwlock": "^5.0.0",
+    "wiring-pi": "^2.2.1"
+  },
   "scripts": {
     "eslint": "eslint src/ test/",
     "build": "webpack --env development && webpack --env production",
