@@ -9,7 +9,7 @@ export default class OutputDevice extends GPIODevice {
 
         this._lock = new Lock();
 
-        this.activeHigh(activeHigh);
+        this._activeHigh(activeHigh);
 
         this._pin.output_with_state(this._valueToState(initialValue));
     }
