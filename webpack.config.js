@@ -12,6 +12,7 @@ if (env === 'production') {
 const config = {
     mode: env,
     entry: `${__dirname}/src/index.js`,
+    target: 'node',
     output: {
         path: `${__dirname}/lib`,
         filename: outputFile,
