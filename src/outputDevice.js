@@ -1,10 +1,11 @@
 import Lock from 'rwlock';
+import {HIGH, LOW} from 'wiringpi-node';
 
 import GPIODevice from './gpioDevice';
 
 export default class OutputDevice extends GPIODevice {
 
-    constructor(pin, activeHigh = true, initialValue = false) {
+    constructor(pin, activeHigh = HIGH, initialValue = LOW) {
         super(pin);
 
         this._lock = new Lock();
@@ -15,8 +16,8 @@ export default class OutputDevice extends GPIODevice {
     }
 
     _activeHigh(value) {
-        this._activeState = value;
-        this._inactiveState = !value;
+        this._activeState = value ? HIGH : LOW;
+        this._inactiveState = value ? LOW : HIGH;
     }
 
     _valueToState(value) {
