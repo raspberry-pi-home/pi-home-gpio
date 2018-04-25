@@ -11,7 +11,7 @@ export default class OutputDevice extends GPIODevice {
 
         this._activeHigh(activeHigh);
 
-        this._pin.output_with_state(this._valueToState(initialValue));
+        this._pin.outputWithState(this._valueToState(initialValue));
     }
 
     _activeHigh(value) {
@@ -29,12 +29,12 @@ export default class OutputDevice extends GPIODevice {
     }
 
     on() {
-        this._pin._stop_blink();
+        this._pin.stopBlink();
         this._write(true);
     }
 
     off() {
-        this._pin._stop_blink();
+        this._pin.stopBlink();
         this._write(false);
     }
 
@@ -43,7 +43,7 @@ export default class OutputDevice extends GPIODevice {
             return this._read();
         }
 
-        this._pin._stop_blink();
+        this._pin.stopBlink();
         this._write(value);
 
         return value;

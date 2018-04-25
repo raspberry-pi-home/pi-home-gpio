@@ -47,6 +47,9 @@ const config = {
             '.js',
         ],
     },
+    externals: {
+        'wiringpi-node': "require('wiringpi-node')",
+    },
 };
 
 module.exports = config;

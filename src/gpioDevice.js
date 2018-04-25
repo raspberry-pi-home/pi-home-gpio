@@ -3,28 +3,29 @@ import Lock from 'rwlock';
 import Device from './device';
 import PhysicalPin from './physicalPin';
 
+const _PINS = new Set();
+const _PINS_LOCK = new Lock();
+
 export default class GPIODevice extends Device {
 
     constructor(pin) {
         super();
-
-        this._PINS = new Set();
-        this._PINS_LOCK = new Lock();
 
         let physicalPin;
 
         if (!pin) {
             throw new Error('No pin given');
         }
+
         if (Number.isInteger(pin)) {
             physicalPin = new PhysicalPin(pin);
         }
 
-        this._PINS_LOCK.readLock((release) => {
-            if (this._PINS.has(physicalPin)) {
+        _PINS_LOCK.readLock((release) => {
+            if (_PINS.has(physicalPin)) {
                 throw new Error(`pin ${pin.toString()} is already in use by another gpiozero object`);
             }
-            this._PINS.add(physicalPin);
+            _PINS.add(physicalPin);
             release();
         });
 
@@ -43,11 +44,11 @@ export default class GPIODevice extends Device {
     }
 
     close() {
-        this._PINS_LOCK.readLock((release) => {
+        _PINS_LOCK.readLock((release) => {
             const pin = this._pin;
 
-            if (this._PINS.has(pin)) {
-                this._PINS.delete(pin);
+            if (_PINS.has(pin)) {
+                _PINS.delete(pin);
                 this._pin.close();
             }
             this._pin = undefined;

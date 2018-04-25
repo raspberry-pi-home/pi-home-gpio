@@ -42,7 +42,7 @@
   },
   "dependencies": {
     "rwlock": "^5.0.0",
-    "wiring-pi": "^2.2.1"
+    "wiringpi-node": "^2.4.4"
   },
   "scripts": {
     "eslint": "eslint src/ test/",
