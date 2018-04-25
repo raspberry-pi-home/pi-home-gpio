@@ -40,7 +40,7 @@ export default class OutputDevice extends GPIODevice {
     }
 
     value(value) {
-        if (!value) {
+        if (value === undefined) {
             return this._read();
         }
 
