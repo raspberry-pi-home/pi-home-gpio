@@ -1,4 +1,4 @@
-import wiringPi from 'wiringpi-node';
+import wiringPi, {HIGH, LOW} from 'wiringpi-node';
 
 import Pin from './pin';
 
@@ -107,7 +107,7 @@ export default class PhysicalPin extends Pin {
 
             this._dutyCycle = value;
         } else {
-            wiringPi.digitalWrite(this._number, value ? 1 : 0);
+            wiringPi.digitalWrite(this._number, value ? HIGH : LOW);
         }
         return value;
     }

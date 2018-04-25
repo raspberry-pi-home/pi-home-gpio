@@ -5,7 +5,7 @@ import GPIODevice from './gpioDevice';
 
 export default class OutputDevice extends GPIODevice {
 
-    constructor(pin, activeHigh = HIGH, initialValue = LOW) {
+    constructor(pin, activeHigh = true, initialValue = false) {
         super(pin);
 
         this._lock = new Lock();
