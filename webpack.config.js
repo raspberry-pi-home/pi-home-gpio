@@ -48,7 +48,7 @@ const config = {
         ],
     },
     externals: {
-        'wiringpi-node': "require('wiringpi-node')",
+        'wiringpi-node': 'wiringpi-node',
     },
 };
 
