@@ -1,6 +1,6 @@
 {
   "name": "pi-home-gpio",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "description": "GPIO interface for https://github.com/raspberry-pi-home/pi-home-raspberry",
   "author": {
     "name": "Gustavo Ingrassia",
