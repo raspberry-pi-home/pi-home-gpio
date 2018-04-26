@@ -2,7 +2,7 @@ export default class Device {
 
     _checkOpen() {
         if (this.closed()) {
-            throw new Error('is closed or uninitialized');
+            throw new Error('Device is closed or uninitialized');
         }
     }
 

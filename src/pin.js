@@ -1,3 +1,8 @@
+import {
+    INPUT_STRING,
+    OUTPUT_STRING
+} from './constants';
+
 const noop = () => ({});
 
 export default class Pin {
@@ -11,15 +16,15 @@ export default class Pin {
     }
 
     outputWithState(state) {
-        this._function = 'output';
+        this._function = OUTPUT_STRING;
         this.state(state);
     }
 
     pinFunction(value) {
         if (value === undefined) {
-            return 'input';
+            return INPUT_STRING;
         }
-        if (value !== 'input') {
+        if (value !== INPUT_STRING) {
             throw new Error(`Cannot set the function of pin ${this} to ${value}`);
         }
         return value;
@@ -69,9 +74,5 @@ export default class Pin {
             clearInterval(this._blinkTimer);
             this._blinkTimer = undefined;
         }
-    }
-
-    toString() {
-        return 'Abstract pin';
     }
 }

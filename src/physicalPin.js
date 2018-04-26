@@ -1,17 +1,21 @@
 import wiringPi, {HIGH, LOW} from 'wiringpi-node';
 
 import Pin from './pin';
+import {
+    INPUT_STRING,
+    OUTPUT_STRING,
+    FLOATING_STRING
+} from './constants';
 
 const _PINS = {};
 const GPIO_FUNCTIONS = {
-    'input': wiringPi.INPUT,
-    'output': wiringPi.OUTPUT,
-    'pwm': wiringPi.PWM_OUTPUT,
+    [INPUT_STRING]: wiringPi.INPUT,
+    [OUTPUT_STRING]: wiringPi.OUTPUT,
 };
 const GPIO_PULL_UPS = {
     'up': wiringPi.PUD_UP,
     'down': wiringPi.PUD_DOWN,
-    'floating': wiringPi.PUD_OFF,
+    FLOATING_STRING: wiringPi.PUD_OFF,
 };
 let WIRING_PI = undefined;
 let PI_INFO = undefined;
@@ -39,16 +43,8 @@ export default class PhysicalPin extends Pin {
         super();
 
         this._number = pin;
-        this._pwm = undefined;
-        this._frequency = undefined;
-        this._dutyCycle = undefined;
-        this._bounce = -666;
-        this._whenChanged = undefined;
-        this._function = 'input';
-        this._state = false;
-        this._pull = 'floating';
-        this._bounce = undefined;
-        this._edges = 'both';
+        this._function = INPUT_STRING;
+        this._pull = FLOATING_STRING;
 
         wiringPi.pinMode(pin, wiringPi.INPUT);
 
@@ -62,15 +58,12 @@ export default class PhysicalPin extends Pin {
     }
 
     close() {
-        this._frequency = undefined;
-        this._whenChanged = undefined;
-
         wiringPi.pullUpDnControl(this._number, wiringPi.PUD_OFF);
     }
 
     outputWithState(state) {
-        this._pull = 'floating';
-        this.pinFunction('output');
+        this._pull = FLOATING_STRING;
+        this.pinFunction(OUTPUT_STRING);
 
         wiringPi.digitalWrite(this._number, state);
     }
@@ -80,39 +73,26 @@ export default class PhysicalPin extends Pin {
             return this._function;
         }
 
-        if (value !== 'input') {
-            this._pull = 'floating';
+        if (value !== INPUT_STRING) {
+            this._pull = FLOATING_STRING;
         }
 
-        if (value === 'input' || value === 'output') {
+        if (value === INPUT_STRING || value === OUTPUT_STRING) {
             wiringPi.pinMode(this._number, GPIO_FUNCTIONS[value]);
             wiringPi.pullUpDnControl(this._number, GPIO_PULL_UPS[this._pull]);
 
             this._function = value;
         } else {
-            throw new Error(`invalid function ${value} for pin ${this._number}`);
+            throw new Error(`Invalid function ${value} for pin ${this._number}`);
         }
         return value;
     }
 
     state(value) {
         if (value === undefined) {
-            if (this._pwm !== undefined) {
-                return this._dutyCycle;
-            }
             return wiringPi.digitalRead(this._number);
         }
-        if (this._pwm !== undefined) {
-            wiringPi.pwmWrite(this._number, value);
-
-            this._dutyCycle = value;
-        } else {
-            wiringPi.digitalWrite(this._number, value ? HIGH : LOW);
-        }
+        wiringPi.digitalWrite(this._number, value ? HIGH : LOW);
         return value;
-    }
-
-    toString() {
-        return `GPIO ${this._number.toString()}`;
     }
 }

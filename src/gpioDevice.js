@@ -23,7 +23,7 @@ export default class GPIODevice extends Device {
 
         _PINS_LOCK.readLock((release) => {
             if (_PINS.has(physicalPin)) {
-                throw new Error(`pin ${pin.toString()} is already in use by another gpiozero object`);
+                throw new Error(`Pin ${pin} is already in use by another gpiozero object`);
             }
             _PINS.add(physicalPin);
             release();
@@ -70,9 +70,5 @@ export default class GPIODevice extends Device {
 
     isActive() {
         return Boolean(this.value());
-    }
-
-    toString() {
-        return `<gpiozero.GPIODevice object on pin ${this._pin._number.toString()} isActive=${this.isActive()}>`;
     }
 }
