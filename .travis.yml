@@ -1,17 +1,13 @@
 language: node_js
 node_js:
-- 6
-- 7
 - 8
+- 10
+- 12
+- 14
 cache:
   directories:
   - node_modules
 script:
-- npm run eslint
-- npm test
+- npm run type-check
 - npm run build
-notifications:
-  email: false
-  slack:
-    rooms:
-      secure: c75WI7PscmVDQFze7oiddCberb+DdzpfoiswwNqZye8znsn+hzmT0ccepKHvi5yEtfYrQdONYFroCS+a4SLUzY2Xeb/Eq/TSaf8fxUjdr3xlyQvHHXLnK2evIJ8fDkAOUkRYEcsxVU5w7bb9SLbIoeoxYTCI6gXkt3ervjjFeH8HyoN26rkSkbj2D6mGARZVYNvnS5TQZcRZSRMchI8h+zWO0eC7xlrDSawWdRqIXXuecBuuCyR8ys2IWCO5Am6Ty+WWqGVd8lG3OwrSuLAPOTygEHDrezcu8PsUi1kouVPEz2337nzaT3UsMITngQ8MoQ+zbediK+fiLo5NedFFHVzGsHF/XkYjVZHIfAlmXfx4QOrbdIO0l9oC9qFrtK0m8YlzuUKfwJDn315oK9gEHuKJxKkokuW3hdEX2Gu+ysouqHKF6l4cyIafnwFnUnOz320/ZIoWLj/JKJ04YiGbiraIOVfnIbgRetpZtnCfgCGy0hKi03CLqGEwhm9YGUhcWl1Y5qTPIMx322Y2iq0hcy7jyGxpEq9hIJyWI7x17SvG+LmIjPIE8c/wQCYAc95NxCfuf/3crdKORxK9PB9qTfZjNxHMZWVTgkyd+sYqqBTKEDNvHJB8fguqluhi6W72RmOUgK0JE2ooslk5StVIRA05QC3K8f7t+YmtOhSULW4=
+- npm run test
