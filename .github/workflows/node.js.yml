@@ -30,4 +30,6 @@ jobs:
       run: npm run lint
     - run: npm run type-check
     - run: npm run build
-    - run: npm test
+    - name: npm run test
+      if: startsWith(matrix.node-version, 10) || startsWith(matrix.node-version, 12) || startsWith(matrix.node-version, 14)
+      run: npm run test
