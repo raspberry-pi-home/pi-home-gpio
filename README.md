@@ -20,7 +20,7 @@ import { Led } from 'pi-home-gpio'
 const led = new Led(17)
 
 led.on()
-setTimeout(_ => led.off(), 1000)
+setTimeout(() => led.off(), 1000)
 ```
 
 ```

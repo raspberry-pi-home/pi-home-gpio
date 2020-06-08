@@ -1,7 +1,7 @@
 import { Led } from './led'
 
 test('basic instantiation', () => {
-  expect(new Led(1)).not.toBeUndefined()
+  expect(() => new Led(1)).not.toThrow()
 })
 
 test('basic interaction', () => {

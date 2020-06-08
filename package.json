@@ -47,7 +47,6 @@
     "build:js:development": "webpack --mode=development",
     "build:js:production": "webpack --mode=production",
     "test": "jest --config=jest.config.json",
-    "test:watch": "DEBUG=true npm run test --watch",
     "release": "release-it",
     "release:minor": "release-it minor",
     "release:major": "release-it major"
