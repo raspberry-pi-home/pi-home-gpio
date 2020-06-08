@@ -9,6 +9,12 @@ npm install --save https://github.com/raspberry-pi-home/pi-home-gpio.git
 ```
 
 ```
+import { isAccessible } from 'pi-home-gpio'
+
+console.log(isAccessible)
+```
+
+```
 import { Led } from 'pi-home-gpio'
 
 const led = new Led(17)
