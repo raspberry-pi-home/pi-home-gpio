@@ -9,12 +9,30 @@ npm install --save https://github.com/raspberry-pi-home/pi-home-gpio.git
 ```
 
 ```
-import {Led} from 'pi-home-gpio';
+import { Led } from 'pi-home-gpio'
 
-const led = new Led(17);
+const led = new Led(17)
 
-led.on();
-setTimeout(_ => led.off(), 1000);
+led.on()
+setTimeout(_ => led.off(), 1000)
+```
+
+```
+import { OnOffButton, Led } from 'pi-home-gpio'
+
+const led = new Led(17)
+const button = new OnOffButton(4)
+
+button.onAction(led.value)
+```
+
+```
+import { PushButton, Led } from 'pi-home-gpio'
+
+const led = new Led(17)
+const button = new PushButton(4)
+
+button.onAction(led.toggle)
 ```
 
 ## Documentation

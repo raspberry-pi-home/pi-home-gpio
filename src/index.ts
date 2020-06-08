@@ -1,2 +1,2 @@
 export { Led } from './led'
-export { Button } from './button'
+export { OnOffButton, PushButton } from './button'
