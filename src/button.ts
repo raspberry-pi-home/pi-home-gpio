@@ -13,7 +13,7 @@ class Button extends Device {
     this.buttonType = buttonType
   }
 
-  onAction = (callback: (value?: BinaryValue) => void) => {
+  onAction = (callback: (value?: BinaryValue) => void): void => {
     if (this.buttonType === 'push') {
       this.pin.watch(() => callback())
     } else {
