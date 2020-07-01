@@ -9,7 +9,7 @@ class MockDevice {
     console.log(`writeSync(${value})`)
 
     this.value = value
-  };
+  }
 
   readSync = (): BinaryValue => {
     // eslint-disable-next-line no-console
@@ -26,7 +26,7 @@ class MockDevice {
   }
 }
 
-type DeviceType = Gpio | MockDevice;
+type DeviceType = Gpio | MockDevice
 
 export class Device {
   protected pin: DeviceType

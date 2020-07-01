@@ -8,11 +8,11 @@ export class Led extends Device {
     super(pin, 'out')
   }
 
-  on = () => this.pin.writeSync(Gpio.HIGH);
+  on = () => this.pin.writeSync(Gpio.HIGH)
 
-  off = () => this.pin.writeSync(Gpio.LOW);
+  off = () => this.pin.writeSync(Gpio.LOW)
 
-  toggle = () => this.pin.writeSync((this.pin.readSync() ^ 1) as BinaryValue);
+  toggle = () => this.pin.writeSync((this.pin.readSync() ^ 1) as BinaryValue)
 
   value = (value?: BinaryValue): BinaryValue | void => {
     if (value !== undefined) {
@@ -20,5 +20,5 @@ export class Led extends Device {
     } else {
       return this.pin.readSync()
     }
-  };
+  }
 }
