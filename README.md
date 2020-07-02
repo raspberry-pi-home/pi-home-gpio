@@ -59,11 +59,15 @@ Toggle the status of the Led
 Set the given value to the Led, if *value* is not provided it will return the current status
 If provided, *value* must be either `1` or `0`
 
+---
+
 ### OnOffButton(pin)
 Creates a new On/Off Button component which will act as a digital input
 
 #### onAction(callback)
 When the button is on/off, `onAction` function is called with a `1` or `0` according to its value
+
+---
 
 ### PushButton(pin)
 Creates a new Push Button component which will act as a digital input
