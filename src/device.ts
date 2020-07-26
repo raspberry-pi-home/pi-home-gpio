@@ -29,13 +29,13 @@ class MockDevice {
 type DeviceType = Gpio | MockDevice
 
 export class Device {
-  protected pin: DeviceType
+  protected _pin: DeviceType
 
   constructor(pin: number, direction: Direction, edge?: Edge, options?: Options) {
     if (Gpio.accessible) {
-      this.pin = new Gpio(pin, direction, edge, options)
+      this._pin = new Gpio(pin, direction, edge, options)
     } else {
-      this.pin = new MockDevice()
+      this._pin = new MockDevice()
     }
   }
 }
