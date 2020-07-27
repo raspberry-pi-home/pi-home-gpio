@@ -48,6 +48,7 @@ jobs:
         author_name: Gustavo Ingrassia
         author_email: gustavo.ingrassia@gmail.com
         message: "build lib"
-        add: "lib/"
+        add: "lib"
+        force: true
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
