@@ -12,7 +12,7 @@
     "type": "git",
     "url": "git+https://github.com/raspberry-pi-home/pi-home-gpio.git"
   },
-  "main": "lib/pi-home-gpio.min.js",
+  "main": "lib/pi-home-gpio.js",
   "types": "lib/pi-home-gpio.d.ts",
   "engines": {
     "node": ">=8"
