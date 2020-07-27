@@ -42,6 +42,7 @@ jobs:
       run: npm run test
 
     - name: push bundle
+      if: startsWith(matrix.node-version, 10)
       uses: EndBug/add-and-commit@v4
       with:
         author_name: Gustavo Ingrassia
