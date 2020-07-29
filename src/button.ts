@@ -8,7 +8,7 @@ class Button extends Device {
   private buttonType: Type
 
   constructor(pin: number, buttonType: Type) {
-    super(pin, 'in', buttonType === 'push' ? 'rising' : 'both', buttonType === 'push' ? { debounceTimeout: 10 } : undefined)
+    super(pin, 'in', buttonType === 'push' ? 'rising' : 'both', buttonType === 'push' ? { debounceTimeout: 100 } : undefined)
 
     this.buttonType = buttonType
   }
