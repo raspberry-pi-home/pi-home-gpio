@@ -14,11 +14,13 @@ class Button extends Device {
   }
 
   onAction = (callback: (value?: BinaryValue) => void): void => {
-    if (this.buttonType === 'push') {
-      this._pin.watch(() => callback())
-    } else {
-      this._pin.watch((err, value) => callback(value))
-    }
+    this._pin.watch((err, value) => {
+      if (this.buttonType === 'push') {
+        callback()
+      } else if (this.buttonType === 'onoff') {
+        callback(value)
+      }
+    })
   }
 }
 
