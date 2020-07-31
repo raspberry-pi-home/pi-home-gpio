@@ -13,13 +13,14 @@ class Button extends Device {
     this.buttonType = buttonType
   }
 
-  onAction = (callback: (value?: BinaryValue) => void): void => {
+  onAction = (callback: (value: BinaryValue) => void): void => {
     this._pin.watch((err, value) => {
-      if (this.buttonType === 'onoff') {
-        callback(value)
-      } else if (this.buttonType === 'push') {
-        callback()
+      if (process.env.DEBUG === 'true') {
+        // eslint-disable-next-line no-console
+        console.log(`button.watch(${err}, ${value})`)
+
       }
+      callback(value)
     })
   }
 }

@@ -5,22 +5,28 @@ class MockDevice {
   private value: BinaryValue = 0
 
   writeSync = (value: BinaryValue): void => {
-    // eslint-disable-next-line no-console
-    console.log(`writeSync(${value})`)
+    if (process.env.DEBUG === 'true') {
+      // eslint-disable-next-line no-console
+      console.log(`writeSync(${value})`)
+    }
 
     this.value = value
   }
 
   readSync = (): BinaryValue => {
-    // eslint-disable-next-line no-console
-    console.log(`readSync => ${this.value}`)
+    if (process.env.DEBUG === 'true') {
+      // eslint-disable-next-line no-console
+      console.log(`readSync => ${this.value}`)
+    }
 
     return this.value
   }
 
   watch = (callback: ValueCallback): void => {
-    // eslint-disable-next-line no-console
-    console.log('watch')
+    if (process.env.DEBUG === 'true') {
+      // eslint-disable-next-line no-console
+      console.log('watch')
+    }
 
     callback(null, this.value)
   }

@@ -73,7 +73,7 @@ When the button is on/off, `onAction` function is called with a `1` or `0` accor
 Creates a new Push Button component which will act as a digital input
 
 #### onAction(callback)
-When the button is pressed and released, `onAction` function is called
+When the button is pressed/released, `onAction` function is called with a `1` or `0` according to its value
 
 ---
 
