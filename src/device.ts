@@ -27,8 +27,6 @@ class MockDevice {
       // eslint-disable-next-line no-console
       console.log('watch')
     }
-
-    callback(null, this.value)
   }
 }
 
