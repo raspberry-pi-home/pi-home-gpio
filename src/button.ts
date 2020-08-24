@@ -20,12 +20,12 @@ class Button extends Device {
 
 export class OnOffButton extends Button {
   constructor(pin: number) {
-    super(pin, 'in', 'both')
+    super(pin, 'in', 'rising', { debounceTimeout: 10 })
   }
 }
 
 export class PushButton extends Button {
   constructor(pin: number) {
-    super(pin, 'in', 'rising', { debounceTimeout: 10 })
+    super(pin, 'in', 'both')
   }
 }
