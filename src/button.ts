@@ -5,13 +5,6 @@ import { Device } from './device'
 type Type = 'onoff' | 'push'
 
 class Button extends Device {
-  private buttonType: Type
-
-  constructor(pin: number, buttonType: Type) {
-    super(pin, 'in', buttonType === 'push' ? 'rising' : 'both', buttonType === 'push' ? { debounceTimeout: 100 } : undefined)
-
-    this.buttonType = buttonType
-  }
 
   onAction = (callback: (value: BinaryValue) => void): void => {
     this._pin.watch((err, value) => {
@@ -27,12 +20,12 @@ class Button extends Device {
 
 export class OnOffButton extends Button {
   constructor(pin: number) {
-    super(pin, 'onoff')
+    super(pin, 'in', 'both')
   }
 }
 
 export class PushButton extends Button {
   constructor(pin: number) {
-    super(pin, 'push')
+    super(pin, 'in', 'rising', { debounceTimeout: 10 })
   }
 }
