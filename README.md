@@ -24,19 +24,19 @@ setTimeout(() => led.off(), 1000)
 ```
 
 ```
-import { OnOffButton, Led } from 'pi-home-gpio'
+import { PushButton, Led } from 'pi-home-gpio'
 
 const led = new Led(17)
-const button = new OnOffButton(4)
+const button = new PushButton(4)
 
 button.onAction(led.value)
 ```
 
 ```
-import { PushButton, Led } from 'pi-home-gpio'
+import { ToggleButton, Led } from 'pi-home-gpio'
 
 const led = new Led(17)
-const button = new PushButton(4)
+const button = new ToggleButton(4)
 
 button.onAction(led.toggle)
 ```
@@ -61,19 +61,19 @@ If provided, *value* must be either `1` or `0`
 
 ---
 
-### OnOffButton(pin)
-Creates a new On/Off Button component which will act as a digital input
+### PushButton(pin)
+Creates a new Button component which will act as a digital input
 
 #### onAction(callback)
-When the button is on/off, `onAction` function is called with a `1` or `0` according to its value
+When the button is released `onAction` function is called
 
 ---
 
-### PushButton(pin)
-Creates a new Push Button component which will act as a digital input
+### ToggleButton(pin)
+Creates a new Button component which will act as a digital input
 
 #### onAction(callback)
-When the button is pressed/released, `onAction` function is called with a `1` or `0` according to its value
+When the button is pressed `onAction` function is called with a `1`, and when the button is released `onAction` function is called with a `0`
 
 ---
 
