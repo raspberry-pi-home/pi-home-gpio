@@ -65,7 +65,7 @@ If provided, *value* must be either `1` or `0`
 Creates a new Button component which will act as a digital input
 
 #### onAction(callback)
-When the button is released `onAction` function is called
+When the button is pressed `onAction` function is called
 
 ---
 
@@ -74,6 +74,9 @@ Creates a new Button component which will act as a digital input
 
 #### onAction(callback)
 When the button is pressed `onAction` function is called with a `1`, and when the button is released `onAction` function is called with a `0`
+
+#### value()
+Returns the current status (`1` or `0`)
 
 ---
 

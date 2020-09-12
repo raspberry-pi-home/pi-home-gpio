@@ -13,6 +13,8 @@ class Button extends Device {
       callback(value)
     })
   }
+
+  value = (): BinaryValue => this._pin.readSync()
 }
 
 export class PushButton extends Button {
